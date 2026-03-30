@@ -7,17 +7,30 @@ This project is a comprehensive, production-ready e-commerce platform built from
 
 ## My Learning Outcomes
     1. Microservice Architecture (Break down complex systems into 5+ independently services)
+    
     2. Test-Driven Development (TDD)	
+    
     3. REST API Design	Efficient, scalable APIs with proper validation, and error handling
+    
     4. Token-Based Authentication	Secure JWT-based auth with refresh token rotation (RS256 AND HS256) based algorithms.
+    
     5. Complete admin APIs for user, product, and order management
+    
     6. Payment Gateway Integration	(Seamless Stripe integration with webhooks , idempotency, transactions) 
+    
     7. Real-Time WebSocket service for live updates and notifications
+    
     8. Database Design	Optimal schema design for PostgreSQL and MongoDB
+    
     9. Multi-Tenancy Systems	SaaS-ready tenant isolation and management
+    
     10. Performance Optimization	Caching strategies and database indexing
+    
     11. Docker Containerization	Professional containerization with multi-stage builds
+    
     12. Role-Based Permissions	Fine-grained access control with RBAC
+    
     13. Event-Driven Architecture	(Asynchronous communication with Kafka)
+    
     14. Explore AWS services (EC2, IAM, S3, Autoscaling, Security groups, Network ACL(s), RDS, Dynamodb, Lambda, ... etc)
 
