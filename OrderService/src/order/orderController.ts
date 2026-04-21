@@ -676,12 +676,27 @@ export class OrderController {
       0,
     );
 
-    const { size, type } = item.chosenConfiguration.priceConfiguration;
+const selectedConfig = item.chosenConfiguration.priceConfiguration;
+  let productTotal = 0;
 
-    const productTotal =
-      cachedProductPrice.priceConfiguration[type].availableOptions[size];
+  for (const [dimension, selectedOption] of Object.entries(selectedConfig)) {
+    const dimensionConfig = cachedProductPrice.priceConfiguration[dimension];
+    if (!dimensionConfig) {
+      throw new Error(
+        `Dimension "${dimension}" not found for product ${item._id}. Available: ${Object.keys(cachedProductPrice.priceConfiguration).join(", ")}`
+      );
+    }
+    const optionPrice = dimensionConfig.availableOptions[selectedOption as string];
+    if (optionPrice === undefined) {
+      throw new Error(
+        `Option "${selectedOption}" not found for dimension "${dimension}" on product ${item._id}. Available: ${Object.keys(dimensionConfig.availableOptions).join(", ")}`
+      );
+    }
+     productTotal += optionPrice;
+  }
 
-    return productTotal + toppingsTotal;
+  return productTotal + toppingsTotal;
+    
   };
 
   private getCurrentToppingPrice = (
@@ -799,7 +814,7 @@ export class OrderController {
         acc[field] = 1;
         return acc;
       },
-      { customerId: 1 },
+      { customerId: 1, tenantId: 1 },
     );
 
     const order = await orderModel
@@ -815,7 +830,7 @@ export class OrderController {
       return res.json(order);
     }
 
-    const myRestaurantOrder = order.tenantId === tenantId;
+    const myRestaurantOrder = order.tenantId.toString() === tenantId.toString();;
     if (role === "manager" && myRestaurantOrder) {
       return res.json(order);
     }
