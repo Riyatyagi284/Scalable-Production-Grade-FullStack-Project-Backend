@@ -2,6 +2,15 @@
 ## Microservice Architecture [Project] - E-Commerce Platform
  A production-grade, enterprise-level e-commerce platform built with microservices architecture, and implementing industry best practices used in software development .
 
+ 
+
+
+
+https://github.com/user-attachments/assets/f5e26517-ed90-4975-ac20-5114c9d0ef98
+
+
+
+
  ## Project Overview
 This project is a comprehensive, production-ready e-commerce platform built from the ground up using microservices architecture. It demonstrates how to break down complex systems into manageable, scalable, and independently deployable services.
 
