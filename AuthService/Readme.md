@@ -2,6 +2,8 @@
 # Auth Service - User & Tenant Management System
 A production-ready authentication and authorization microservice built with Node.js, Express, TypeORM, and TypeScript. This service provides comprehensive user management, multi-tenant architecture, and robust JWT-based authentication.
 
+> **Running it for the first time?** See [`SETUP.md`](./SETUP.md) — it covers Postgres setup, env file naming (`.env.dev`, not `.env`), and the common `password authentication failed for user "root"` gotcha.
+
 ## Overview
 Auth Service is a robust, scalable authentication microservice designed to handle complex user management scenarios in multi-tenant applications. It provides a complete authentication solution with role-based access control (RBAC), refresh token rotation, and comprehensive tenant isolation.
 

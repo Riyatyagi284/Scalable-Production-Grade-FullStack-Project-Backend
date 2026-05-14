@@ -1,0 +1,31 @@
+# One-shot local Postgres for AuthService.
+# Usage:
+#   docker compose up -d           # start
+#   docker compose down            # stop (keeps data)
+#   docker compose down -v         # stop and wipe data
+#
+# Host port defaults to 5432. If 5432 is already in use on your machine,
+# export DB_PORT (e.g. `DB_PORT=5434 docker compose up -d`) and set the
+# same value in your .env.dev.
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: auth-service-pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-auth_service}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - auth_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_NAME:-auth_service}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  auth_pg_data:

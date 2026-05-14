@@ -13,5 +13,6 @@ const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
     },
 });
 
+fs.mkdirSync("certs", { recursive: true });
 fs.writeFileSync("certs/private.pem", privateKey);
 fs.writeFileSync("certs/public.pem", publicKey);

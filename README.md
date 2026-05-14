@@ -43,3 +43,12 @@ This project is a comprehensive, production-ready e-commerce platform built from
     
     14. Explore AWS services (EC2, IAM, S3, Autoscaling, Security groups, Network ACL(s), RDS, Dynamodb, Lambda, ... etc)
 
+## Running locally
+
+Each service has its own setup. Start with the auth service:
+
+- **AuthService** — see [`AuthService/SETUP.md`](AuthService/SETUP.md). One command brings up Postgres (`docker compose up -d`), then `npm install && npm run dev`.
+- **CatalogService**, **OrderService**, **Ws-Service**, **Admin-UI**, **Client-UI** — see each service's `Readme.md`.
+
+Common gotcha: PostgreSQL's default superuser is `postgres`, not `root`. If you see `password authentication failed for user "root"`, check `DB_USERNAME` in your `.env.dev`.
+
